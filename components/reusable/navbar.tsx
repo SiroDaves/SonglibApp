@@ -4,17 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { matchNavigationPaths } from "@/utils/helpers/utils";
+import { usePathname } from "next/navigation";
 
 const navigation = [
-  { name: 'Features', href: '#features', current: true },
-  { name: 'Donate Today', href: 'donate', current: false },
-  { name: 'Privacy Policy', href: 'privacy-policy', current: false },
-  { name: 'Contact Us', href: '#contact-us', current: false },
+  { name: 'Features', path: '#features' },
+  { name: 'Donate Today', path: 'donate' },
+  { name: 'Privacy Policy', path: 'privacy-policy' },
+  { name: 'Contact Us', path: '#contact-us' },
 ]
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 const Navbar: React.FC = () => {
+  const pathname = usePathname();
+
   return (
     <Disclosure as="nav" className="bg-white sticky top-0 z-50">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -31,24 +35,29 @@ const Navbar: React.FC = () => {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
               <a href="https://songlib.vercel.app/">
-                <Image src={info.appIcon} width={20} height={20} alt="SongLib" className="w-10"/>
+                <Image src={info.appIcon} width={20} height={20} alt="SongLib" className="w-10" />
               </a>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? 'page' : undefined}
-                    className={classNames(
-                      item.current ? 'bg-[#b86918] text-white' : 'text-[#b86918] hover:bg-[#bf360c] hover:text-white',
-                      'rounded-md px-3 py-2 text-xl font-medium',
-                    )}
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                {navigation.map((item) => {
+                  const pathMatches = matchNavigationPaths(
+                    pathname,
+                    item.path
+                  );
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.path}
+                      className={classNames(
+                        pathMatches ? 'bg-[#b86918] text-white' : 'text-[#b86918] hover:bg-[#bf360c] hover:text-white',
+                        'rounded-md px-3 py-2 text-xl font-medium',
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -67,20 +76,26 @@ const Navbar: React.FC = () => {
 
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
-          {navigation.map((item) => (
-            <DisclosureButton
-              key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? 'page' : undefined}
-              className={classNames(
-                item.current ? 'bg-[#b86918] text-white' : 'text-gray-300 hover:bg-[#bf360c] hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
-              )}
-            >
-              {item.name}
-            </DisclosureButton>
-          ))}
+          {navigation.map((item) => {
+            const pathMatches = matchNavigationPaths(
+              pathname,
+              item.path
+            );
+            return (
+              <DisclosureButton
+                key={item.name}
+                as="a"
+                href={item.path}
+                aria-current={pathMatches ? 'page' : undefined}
+                className={classNames(
+                  pathMatches ? 'bg-[#b86918] text-white' : 'text-gray-300 hover:bg-[#bf360c] hover:text-white',
+                  'block rounded-md px-3 py-2 text-base font-medium',
+                )}
+              >
+                {item.name}
+              </DisclosureButton>
+            );
+          })}
         </div>
       </DisclosurePanel>
     </Disclosure>
