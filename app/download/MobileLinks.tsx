@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function MobileLinks() {
   return (
-    <div className="py-5 mx-auto max-w-2xl lg:max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-2xl lg:max-w-3xl px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 justify-items-center">
         {links
           .filter((link) => link.type === 'mobile')
@@ -29,7 +29,7 @@ export default function MobileLinks() {
                 role="button"
                 rel="noopener noreferrer"
               >
-                <span className="text-xl">Get the App</span>
+                <span className="text-xl">INSTALL</span>
               </Link>
             </div>
           ))}
