@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
         </h3>
       </div>
 
-      <div className="lg:py-8 bg-white">
+      <div className="lg:py-8 my-8 bg-[#fff] rounded-lg drop-shadow-3xl">
         <h3 className="text-2xl text-black p-2 px-5 text-x2l rounded-md">
           {info.privacyStatement}
         </h3>

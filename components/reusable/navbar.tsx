@@ -8,10 +8,10 @@ import { matchNavigationPaths } from "@/utils/helpers/utils";
 import { usePathname } from "next/navigation";
 
 const navigation = [
-  { name: 'Features', path: '#features' },
-  { name: 'Donate Today', path: 'donate' },
-  { name: 'Privacy Policy', path: 'privacy-policy' },
-  { name: 'Contact Us', path: '#contact-us' },
+  { name: 'Features', path: '/#features' },
+  { name: 'Donate Today', path: '/donate' },
+  { name: 'Privacy Policy', path: '/privacy-policy' },
+  { name: 'Contact Us', path: '/#contact-us' },
 ]
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
-              <a href="https://songlib.vercel.app/">
+              <a href="/">
                 <Image src={info.appIcon} width={20} height={20} alt="SongLib" className="w-10" />
               </a>
             </div>
