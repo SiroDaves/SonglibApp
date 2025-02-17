@@ -5,7 +5,6 @@ import { info } from "@/utils/data/app-info";
 import Image from "next/image";
 import Link from "next/link";
 export default function DesktopLinks() {
-  // Function to generate download links
   const getDownloadUrl = (ext: string) =>
     `${info.github}/releases/download/v${info.appVersion}/${info.appName}_${info.appVersion}${ext}`;
 
