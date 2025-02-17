@@ -1,13 +1,38 @@
 "use client";
 
 import { Feature, features } from "@/utils/data/features";
-import { books } from "@/utils/data/books";
+import { Book, fetchBooks } from "@/state/books";
 import { RiApps2AiFill } from "react-icons/ri";
-import { FaBookOpen } from "react-icons/fa6";
 import GlowCard from "@/components/ui/glow-card";
 import Marquee from "react-fast-marquee";
+import BookCard from "@/components/ui/book-card";
+import { useState, useEffect } from "react";
 
 export default function Features() {
+  const [books, setBooks] = useState<Book[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadBooks = async () => {
+      try {
+        const data = await fetchBooks();
+        if (data) {
+          setBooks(data.data);
+        } else {
+          setError("Failed to load books.");
+        }
+      } catch (error) {
+        console.error("Error fetching books:", error);
+        setError("An error occurred while fetching books.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadBooks();
+  }, []);
+
   return (
     <div id="features">
       <div className="w-full">
@@ -20,24 +45,13 @@ export default function Features() {
           play={true}
           direction="left"
         >
-          {books.map((book, id) => (
-            <div className="w-40 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"
-              key={id}>
-              <div className="h-full w-full rounded-lg border border-[#BF360C] shadow-none shadow-gray-50 group-hover:border-red-500 transition-all duration-500">
-                <div className="flex -translate-y-[1px] justify-center">
-                  <div className="w-3/4">
-                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-red-500 to-transparent" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-3 p-6">
-                  <div className="h-8 sm:h-10">
-                    <FaBookOpen size={36} color="#331900" />
-                  </div>
-                  <p className="text-primary text-sm sm:text-lg"> {book} </p>
-                </div>
-              </div>
-            </div>
-          ))}
+          {loading ? (
+            <p>Loading books...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : books.length > 0 ? (
+            books.map((book) => <BookCard book={book} key={book.bookId} />)
+          ) : (<p>Loading data ...</p>)}
         </Marquee>
       </div>
 
