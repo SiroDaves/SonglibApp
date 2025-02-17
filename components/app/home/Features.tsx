@@ -34,7 +34,7 @@ export default function Features() {
   }, []);
 
   return (
-    <div id="features">
+    <section id="features">
       <div className="w-full">
         <Marquee
           gradient={false}
@@ -76,6 +76,6 @@ export default function Features() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

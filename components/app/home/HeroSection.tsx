@@ -7,7 +7,7 @@ import { MdDownload } from "react-icons/md";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
+    <section className="relative flex flex-col items-center justify-between py-4 lg:py-8">
       <Image
         src='/images/main_banner.png'
         width={500}
