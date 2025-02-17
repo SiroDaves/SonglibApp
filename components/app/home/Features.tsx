@@ -7,17 +7,10 @@ import { FaBookOpen } from "react-icons/fa6";
 import GlowCard from "@/components/ui/glow-card";
 import Marquee from "react-fast-marquee";
 
-interface feature {
-  id: number;
-  duration: string;
-  title: string;
-  company: string;
-}
-
 export default function Features() {
   return (
     <div id="features">
-<div className="w-full">
+      <div className="w-full">
         <Marquee
           gradient={false}
           speed={80}
@@ -38,7 +31,7 @@ export default function Features() {
                 </div>
                 <div className="flex flex-col items-center justify-center gap-3 p-6">
                   <div className="h-8 sm:h-10">
-                  <FaBookOpen size={36} color="#331900" />
+                    <FaBookOpen size={36} color="#331900" />
                   </div>
                   <p className="text-primary text-sm sm:text-lg"> {book} </p>
                 </div>

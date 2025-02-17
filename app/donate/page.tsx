@@ -2,7 +2,6 @@
 
 import { info } from "@/utils/data/app-info";
 import { Donation, donations } from "@/utils/data/donations";
-import { PrivacyText, texts } from "@/utils/data/privacy-texts";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -52,7 +51,7 @@ export default function Donate() {
 
             {donations
               .map((donation: Donation) => (
-                <div className="flex flex-col items-center text-center gap-x-8 p-8 rounded-lg border bg-[#fff] drop-shadow-lg">
+                <div key={donation.id} className="flex flex-col items-center text-center gap-x-8 p-8 rounded-lg border bg-[#fff] drop-shadow-lg">
                   <Image
                     src={donation.image}
                     alt={donation.title}

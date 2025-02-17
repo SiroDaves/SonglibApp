@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import { useEffect, useState } from "react";
 
 interface AnimationLottieProps {
-  animationFile: any;
+  animationFile: string;
 }
 
 const AnimationLottie: React.FC<AnimationLottieProps> = ({ animationFile }) => {
