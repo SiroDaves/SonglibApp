@@ -4,9 +4,11 @@ import { AppLink, links } from "@/utils/data/app-links";
 import { info } from "@/utils/data/app-info";
 import Image from "next/image";
 import Link from "next/link";
+
 export default function DesktopLinks() {
-  const getDownloadUrl = (ext: string) =>
-    `${info.github}/releases/download/v${info.appVersion}/${info.appName}_${info.appVersion}${ext}`;
+  const getDownloadUrl = (ext: string) => {
+    return `${info.github}/releases/download/v${info.appVersion}/${info.appName}_${info.appVersion}${ext}`;
+  }
 
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -28,7 +30,6 @@ export default function DesktopLinks() {
           }, [])
           .map((link: AppLink) => (
             <div key={link.id} className="flex flex-col items-center text-center px-3 py-5">
-              {/* Image */}
               <Image
                 src={`/icons/${link.os}.png`}
                 alt={link.os}
