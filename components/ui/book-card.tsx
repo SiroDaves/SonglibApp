@@ -1,5 +1,4 @@
 import { Book } from '@/state/books';
-import { FaBookOpen, FaCommentAlt } from 'react-icons/fa';
 
 interface BookCardProps {
   book: Book;

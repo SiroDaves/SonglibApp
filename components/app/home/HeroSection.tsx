@@ -13,7 +13,7 @@ export default function HeroSection() {
   const getDownloadUrl = (): string => {
     const normalizedOS = osName.replace(/\s/g, '');
     const currentLink: AppLink = links.find(link => link.os === normalizedOS) || links[0];
-    var downloadUrl: string = "/download";
+    let downloadUrl: string = "/download";
 
     switch (osName) {
       case "Android":
