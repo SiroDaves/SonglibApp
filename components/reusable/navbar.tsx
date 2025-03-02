@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Logo & Navigation */}
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex flex-1 items-center justify-center sm:items-start sm:justify-start">
             <div className="flex shrink-0 items-center">
               <Link href="/">
                 <Image src={info.appIcon} width={20} height={20} alt="SongLib" className="w-10" />
@@ -101,7 +101,7 @@ const Navbar: React.FC = () => {
                 href={item.path}
                 aria-current={isActive ? 'page' : undefined}
                 className={classNames(
-                  isActive ? 'bg-[#b86918] text-white' : 'text-gray-300 hover:bg-[#bf360c] hover:text-white',
+                  isActive ? 'bg-[#b86918] text-white' : 'text-primary hover:bg-[#bf360c] hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium',
                 )}
               >
