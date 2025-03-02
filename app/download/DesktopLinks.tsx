@@ -31,7 +31,7 @@ export default function DesktopLinks() {
           .map((link: AppLink) => (
             <div key={link.id} className="flex flex-col items-center text-center px-3 py-5">
               <Image
-                src={`/icons/${link.os}.png`}
+                src={`/icons/${link.os.toLowerCase()}.png`}
                 alt={link.os}
                 width={100}
                 height={120}
