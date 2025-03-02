@@ -46,7 +46,7 @@ export default function Features() {
           direction="left"
         >
           {loading ? (
-            <p>Loading books...</p>
+            <span></span>
           ) : error ? (
             <p>{error}</p>
           ) : books.length > 0 ? (

@@ -14,7 +14,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
       <div className="w-full h-full flex flex-col items-center justify-center rounded-full border border-[#BF360C] p-4 bg-white shadow-lg">
         <div className="flex flex-col items-center justify-center gap-1 text-center">
           <h4 className="text-primary text-md font-semibold">
-            {book.title}
+            {book.title.replace("''", "'")}
           </h4>
           <p className="text-primary text-xs">
             {book.songs} {book.subTitle}<br/>songs

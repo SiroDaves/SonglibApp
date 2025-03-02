@@ -7,6 +7,8 @@ import Link from "next/link";
 import { MdDownload } from "react-icons/md";
 import { links } from "@/utils/data/app-links";
 
+const getDownloadUrl = (ext: string) =>
+  `${info.github}/releases/download/v${info.appVersion}/${info.appName}_${info.appVersion}${ext}`;
 const getDownloadLink = () => {
   const osMappings: { [key: string]: string } = {
     "Windows": "Windows",
@@ -39,8 +41,6 @@ const getDownloadLink = () => {
   }
 };
 
-
-
 const HeroSection = () => {
   const downloadLink = getDownloadLink();
 
@@ -60,10 +60,10 @@ const HeroSection = () => {
 
       {downloadLink ? (
         <Link
-          href={getDownloadLink()}
           className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-orange-600 to-orange-900 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-          target="_blank"
+          href={getDownloadUrl(osName)}
           role="button"
+          rel="noopener noreferrer"
         >
           <span className="text-xl">Get Songlib Today</span>
           <MdDownload size={16} />
