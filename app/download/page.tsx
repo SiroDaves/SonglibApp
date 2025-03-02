@@ -1,5 +1,6 @@
 "use client";
 
+import { osName } from "react-device-detect";
 import { info } from "@/utils/data/app-info";
 import DesktopLinks from "./DesktopLinks";
 import MobileLinks from "./MobileLinks";
