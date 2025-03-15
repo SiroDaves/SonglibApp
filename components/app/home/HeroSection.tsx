@@ -35,7 +35,6 @@ export default function HeroSection() {
     let downloadUrl: string = "/download";
 
     switch (osName) {
-      case "Android":
       case "iOS":
         downloadUrl = currentLink.url;
 
