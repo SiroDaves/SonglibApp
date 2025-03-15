@@ -13,7 +13,7 @@ export interface AppInfo {
 export const info: AppInfo = {
   appName: 'SongLib',
   appIcon: '/icons/app_icon.png',
-  appVersion: '1.0.7.96',
+  appVersion: '1.0.797',
   callout: 'Get SongLib',
   tagline: 'Your Songbook on the Go!',
   description: 'SongLib gives you access to your church songbook/hymns seamlessly that you don\'t have to worry about even being online once you have set up the app on your device.',
